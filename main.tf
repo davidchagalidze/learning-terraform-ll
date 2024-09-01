@@ -54,9 +54,8 @@ module "blog_vpc" {
 module "autoscaling" {
   source  = "terraform-aws-modules/autoscaling/aws"
   version = "8.0.0"
-  # insert the 1 required variable here
-
   name = "blog"
+
   min_size = 1
   max_size = 2
 
@@ -92,6 +91,7 @@ module "alb" {
       protocol         = "HTTP"
       port             = 80
       target_type      = "instance"
+      target_id = aws_instance.blog.id
     }
   }
 
