@@ -68,6 +68,7 @@ module "autoscaling" {
       traffic_source_identifier = module.alb.target_groups["ex-instance"].arn
       traffic_source_type       = "elbv2" # default
     }
+  }
 
   image_id           = data.aws_ami.app_ami.id
   instance_type      = var.instance_type
